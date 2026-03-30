@@ -371,7 +371,7 @@ class OpenButton(Button):
 
 
 
-def export_model(filename='test.ply'):
+def export_model(filename='test.s3df'):
     global all_objects
     blocks_data = []
 
@@ -390,7 +390,7 @@ def export_model(filename='test.ply'):
         blocks_data.append(line)
 
     header = (
-        "ply\n"
+        "s3df\n"
         "format ascii 1.0\n"
         f"element vertex {len(blocks_data)}\n"
         "property float x\n"
@@ -499,9 +499,9 @@ class MainMenuButton(Button):
         def _export():
             self.menu.enabled = False
             # Создаем окно сохранения. 
-            # file_types должен быть списком расширений через запятую (например, ['.ply'])
+            # file_types должен быть списком расширений через запятую (например, ['.s3df'])
             fb = FileBrowserSave(
-                file_types=['.ply'],
+                file_types=['.s3df'],
                 enabled=True
             )
             # Когда пользователь нажмет "Save", вызовется наша функция экспорта
@@ -513,7 +513,7 @@ class MainMenuButton(Button):
             self.menu.enabled = False
             # Создаем окно выбора файла
             fb = FileBrowser(
-                file_types=['.ply'],
+                file_types=['.s3df'],
                 enabled=True
             )
             # Когда пользователь выберет файл, вызовется наша функция импорта
@@ -524,8 +524,8 @@ class MainMenuButton(Button):
 
         self.menu = Entity(parent=camera.ui, enabled=False)
 
-        Button(parent=self.menu, text='Импортировать ply', scale=(.3, .05), y=.1, on_click=_import,color=color.gray)
-        Button(parent=self.menu, text='Экспортировать в ply', scale=(.3, .05), y=.04, on_click=_export,color=color.gray)
+        Button(parent=self.menu, text='Импортировать s3df', scale=(.3, .05), y=.1, on_click=_import,color=color.gray)
+        Button(parent=self.menu, text='Экспортировать в s3df', scale=(.3, .05), y=.04, on_click=_export,color=color.gray)
         Button(parent=self.menu, text='Выход из приложения', scale=(.3, .05), y=-.02, on_click=lambda: application.quit(),color=color.red)
 
         
@@ -649,7 +649,7 @@ def game_():
         # player_.enabled=True
         # camera.parent=player_.camera_pivot
 
-        import_model('test.ply')
+        import_model('test.s3df')
 
         
         
