@@ -28,8 +28,6 @@ choice_instrument='move'
 
 
 
-
-
 class Instruments_button(Button):
     def __init__(self,texture=None,position=Vec3(0,0,0)):
         super().__init__(
